@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('auth.auth-login', ['type_menu' => '']);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function()
+    {
+        return view('pages.app.dashboard-siakad', ['type_menu' => '']);
+    })->name('home');
+});
 /*
 Route::get('/auth-login', function () {
     return view('auth.auth-login', ['type_menu' => '']);
